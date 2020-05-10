@@ -11,6 +11,7 @@ func failOnFatalError(err error, msg string) {
 		log.Fatalf("%s: %s", msg, err)
 	}
 }
+
 func main() {
 	// connecting to RabbitMQ
 	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
@@ -31,7 +32,7 @@ func main() {
 	)
 	failOnFatalError(err, "failed to create a queue")
 	// Publish message to the queue
-	body := "Hello Subscriber!!"
+	body := "Hello Pavani!!"
 	err = ch.Publish(
 		"",
 		q.Name,
