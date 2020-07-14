@@ -15,5 +15,5 @@ func main(){
 
 func okHandler(w http.ResponseWriter, r *http.Request){
 	time.Sleep(time.Second)
-	w.Write([]byte("OK"))
+	w.Write([]byte("OK"));
 }
