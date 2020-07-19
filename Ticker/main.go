@@ -6,14 +6,18 @@ import (
 )
 
 func main() {
-	ticker := time.NewTicker(time.Second)
+	topTicker := time.NewTicker(time.Minute)
+	for {
+		fmt.Println("Main Task")
+		insideTask()
+		<-topTicker.C
+	}
+}
 
-	go func() {
-		for range ticker.C {
-			fmt.Println("Tick")
-		}
-	}()
-	time.Sleep(5 * time.Second)
-	ticker.Stop()
-	fmt.Println("Ticker stopped")
+func insideTask() {
+	insideTicker := time.NewTicker(time.Second * 10)
+	for {
+		fmt.Println("inside task")
+		<-insideTicker.C
+	}
 }
